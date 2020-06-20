@@ -1,5 +1,7 @@
 package com.ceiba.tiendatecnologica.dominio.servicio.vendedor;
 
+import com.ceiba.tiendatecnologica.dominio.GarantiaExtendida;
+import com.ceiba.tiendatecnologica.dominio.Producto;
 import com.ceiba.tiendatecnologica.dominio.excepcion.GarantiaExtendidaException;
 import com.ceiba.tiendatecnologica.dominio.repositorio.RepositorioGarantiaExtendida;
 import com.ceiba.tiendatecnologica.dominio.repositorio.RepositorioProducto;
@@ -18,10 +20,20 @@ public class ServicioVendedor {
 		this.repositorioGarantia = repositorioGarantia;
 	}
 
-	public void generarGarantia(String codigo) {
-		throw new UnsupportedOperationException("Método pendiente por implementar");
-
+	public void generarGarantia(String codigo, String cliente) {
+		if(tieneGarantia(codigo)!=false){
+			Producto producto = this.repositorioGarantia.obtenerProductoConGarantiaPorCodigo(codigo);
+			GarantiaExtendida garantia = new GarantiaExtendida(producto,cliente);
+			this.repositorioGarantia.agregar(garantia);
+		}
 	}
 
-	public boolean tieneGarantia(String codigo) { return false; }
+	public boolean tieneGarantia(String codigo) {
+		Producto producto = this.repositorioGarantia.obtenerProductoConGarantiaPorCodigo(codigo);
+		if(producto!=null){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

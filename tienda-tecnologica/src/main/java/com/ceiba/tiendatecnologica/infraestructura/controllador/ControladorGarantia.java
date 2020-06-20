@@ -9,14 +9,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/garantia")
 public class ControladorGarantia {
 	private final ManejadorObtenerGarantia manejadorObtenerGarantia;
+	private final ManejadorGenerarGarantia manejadorGenerarGarantia;
 
-	public ControladorGarantia(ManejadorObtenerGarantia manejadorObtenerGarantia) {
+	public ControladorGarantia(ManejadorObtenerGarantia manejadorObtenerGarantia, ManejadorGenerarGarantia manejadorGenerarGarantia) {
 		this.manejadorObtenerGarantia = manejadorObtenerGarantia;
+		this.manejadorGenerarGarantia = manejadorGenerarGarantia;
 	}
 
 	@PostMapping("/{idProducto}/{nombreCliente}")
-	public void generar(@PathVariable(name = "idProducto") String codigoProducto) {
-		throw new UnsupportedOperationException("Método pendiente por implementar");
+	public void generar(@PathVariable(name = "idProducto") String codigoProducto, @PathVariable(name = "nombreCliente") String nombreCliente) {
+		this.manejadorGenerarGarantia.ejecutar(codigoProducto,nombreCliente);
 	}
 
 	@GetMapping("/{id}")

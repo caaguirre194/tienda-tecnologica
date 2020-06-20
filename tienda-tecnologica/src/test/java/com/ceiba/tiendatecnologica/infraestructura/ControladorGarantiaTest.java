@@ -1,6 +1,8 @@
 package com.ceiba.tiendatecnologica.infraestructura;
 
 import com.ceiba.tiendatecnologica.aplicacion.comando.ComandoProducto;
+import com.ceiba.tiendatecnologica.dominio.GarantiaExtendida;
+import com.ceiba.tiendatecnologica.testdatabuilder.GarantiaTestDataBuilder;
 import com.ceiba.tiendatecnologica.testdatabuilder.ProductoTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
@@ -31,10 +33,11 @@ public class ControladorGarantiaTest {
     @Test
     public void generarGarantiaProducto() throws Exception
     {
-        ComandoProducto comandoProducto= new ProductoTestDataBuilder().buildComando();
+        //ComandoProducto comandoProducto = new ProductoTestDataBuilder().buildComando();
+        GarantiaExtendida garantia = new GarantiaTestDataBuilder().build();
         mvc.perform( MockMvcRequestBuilders
                 .post("/garantia/{idProducto}/{nombreCliente}","CODIGO","CLIENTE")
-                .content(objectMapper.writeValueAsString(comandoProducto))
+                .content(objectMapper.writeValueAsString(garantia))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());

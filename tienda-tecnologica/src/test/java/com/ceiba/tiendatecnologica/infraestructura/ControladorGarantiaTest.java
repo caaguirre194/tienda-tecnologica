@@ -33,10 +33,9 @@ public class ControladorGarantiaTest {
     @Test
     public void generarGarantiaProducto() throws Exception
     {
-        //ComandoProducto comandoProducto = new ProductoTestDataBuilder().buildComando();
         GarantiaExtendida garantia = new GarantiaTestDataBuilder().build();
         mvc.perform( MockMvcRequestBuilders
-                .post("/garantia/{idProducto}/{nombreCliente}","CODIGO","CLIENTE")
+                .post("/garantia/{idProducto}/{nombreCliente}","F01TSA0150","felipe")
                 .content(objectMapper.writeValueAsString(garantia))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))

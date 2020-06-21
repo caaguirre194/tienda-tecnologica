@@ -46,7 +46,7 @@ public class ServicioVendedor {
 			valorGarantia = precioProducto*.20;
 			fechaFinGarantia = agregarDiasFecha(fechaInicioGarantia,200);
 			int cantidadLunes = obtenerCantidadLunes(fechaInicioGarantia, fechaFinGarantia);
-			fechaFinGarantia = agregarDiasFecha(fechaFinGarantia,cantidadLunes);
+			fechaFinGarantia = agregarDiasFecha(fechaFinGarantia, cantidadLunes);
 			if(esDiaDomingo(fechaFinGarantia)){
 				fechaFinGarantia = agregarDiasFecha(fechaFinGarantia,1);
 			}
@@ -56,6 +56,7 @@ public class ServicioVendedor {
 		}
 		garantia.setFechaFinGarantia(fechaFinGarantia);
 		garantia.setPrecioGarantia(valorGarantia);
+		Date date2 = new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime();
 		return garantia;
 	}
 

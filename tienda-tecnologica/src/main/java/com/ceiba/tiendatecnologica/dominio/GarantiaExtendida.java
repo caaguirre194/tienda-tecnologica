@@ -57,4 +57,5 @@ public class GarantiaExtendida {
 	public void setPrecioGarantia(double precioGarantia) {
 		this.precioGarantia = precioGarantia;
 	}
+
 }

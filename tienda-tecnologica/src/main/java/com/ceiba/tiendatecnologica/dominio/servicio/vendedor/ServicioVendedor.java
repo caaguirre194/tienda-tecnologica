@@ -8,6 +8,7 @@ import com.ceiba.tiendatecnologica.dominio.repositorio.RepositorioProducto;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class ServicioVendedor {
 
@@ -44,6 +45,11 @@ public class ServicioVendedor {
 		if(precioProducto>TOPE_PRECIO_PRODUCTO){
 			valorGarantia = precioProducto*.20;
 			fechaFinGarantia = agregarDiasFecha(fechaInicioGarantia,200);
+			int cantidadLunes = obtenerCantidadLunes(fechaInicioGarantia, fechaFinGarantia);
+			fechaFinGarantia = agregarDiasFecha(fechaFinGarantia,cantidadLunes);
+			if(esDiaDomingo(fechaFinGarantia)){
+				fechaFinGarantia = agregarDiasFecha(fechaFinGarantia,1);
+			}
 		}else{
 			valorGarantia = precioProducto*.10;
 			fechaFinGarantia = agregarDiasFecha(fechaInicioGarantia,100);
@@ -53,12 +59,37 @@ public class ServicioVendedor {
 		return garantia;
 	}
 
+	private boolean esDiaDomingo(Date fecha){
+		Calendar cFecha = Calendar.getInstance();
+		cFecha.setTime(fecha);
+		if (cFecha.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+			return true;
+		}
+		return false;
+	}
+
 	public Date agregarDiasFecha(Date fecha, int dias) {
 		Calendar c = Calendar.getInstance();
 		c.setTime(fecha);
 		c.add(Calendar.DATE, dias);
-		fecha.setTime(c.getTime().getTime());
-		return fecha;
+		Date x = new Date();
+		x.setTime(c.getTime().getTime());
+		return x;
+	}
+
+	public int obtenerCantidadLunes(Date fechaInicio, Date fechaFin){
+		int totalLunes = 0;
+		Calendar cInicio = Calendar.getInstance();
+		cInicio.setTime(fechaInicio);
+		Calendar cFin = Calendar.getInstance();
+		cFin.setTime(fechaFin);
+		while (!cFin.before(cInicio)) {
+			if (cInicio.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
+				totalLunes++;
+			}
+			cInicio.add(Calendar.DATE, 1);
+		}
+		return totalLunes;
 	}
 
 	public boolean tieneGarantia(String codigo) {

@@ -50,4 +50,11 @@ public class GarantiaExtendida {
 		return nombreCliente;
 	}
 
+	public void setFechaFinGarantia(Date fechaFinGarantia) {
+		this.fechaFinGarantia = fechaFinGarantia;
+	}
+
+	public void setPrecioGarantia(double precioGarantia) {
+		this.precioGarantia = precioGarantia;
+	}
 }

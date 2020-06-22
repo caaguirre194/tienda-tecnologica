@@ -3,9 +3,7 @@ package com.ceiba.tiendatecnologica.testdatabuilder;
 import com.ceiba.tiendatecnologica.dominio.GarantiaExtendida;
 import com.ceiba.tiendatecnologica.dominio.Producto;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class GarantiaTestDataBuilder {
 
@@ -43,5 +41,5 @@ public class GarantiaTestDataBuilder {
         return new GarantiaExtendida(this.producto,fechaSolicitudGarantia,  this.fechaFinGarantia, this.precioGarantia,
         this.nombreCliente);
     }
-    // new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime()
+
 }

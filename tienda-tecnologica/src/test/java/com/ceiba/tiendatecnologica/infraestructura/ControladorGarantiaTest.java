@@ -25,6 +25,11 @@ public class ControladorGarantiaTest {
     public static final String ESTE_PRODUCTO_NO_CUENTA_CON_GARANTIA = "Este producto no cuenta con garantía extendida";
     private static final String CODIGO_PRODUCTO_NO_CUENTA_CON_GARANTIA = "U01TEA0150";
 
+    private static final String CODIGO_SIN_GARANTIA = "H01K1AT51";
+    private static final String NOMBRE_PRODUCTO = "Lavadora";
+    private static final double PRECIO_MAYOR_TOPE = 600000;
+    private static final double PRECIO_MENOR_TOPE = 400000;
+
     @Autowired
     private MockMvc mvc;
 
@@ -53,6 +58,11 @@ public class ControladorGarantiaTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is4xxClientError())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.mensaje").value(ESTE_PRODUCTO_NO_CUENTA_CON_GARANTIA));
+    }
+
+    @Test
+    public void crearGarantiaConPrecio10(){
+
     }
 
 }

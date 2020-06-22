@@ -29,8 +29,7 @@ public class ControladorProductoTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void getProductoPorId() throws Exception
-    {
+    public void getProductoPorId() throws Exception {
         mvc.perform( MockMvcRequestBuilders
                 .get("/productos/{id}", "PROD_001")
                 .accept(MediaType.APPLICATION_JSON))
@@ -40,8 +39,7 @@ public class ControladorProductoTest {
     }
 
     @Test
-    public void crearProducto() throws Exception
-    {
+    public void crearProducto() throws Exception {
         ComandoProducto comandoProducto= new ProductoTestDataBuilder().buildComando();
         mvc.perform( MockMvcRequestBuilders
                 .post("/productos")
@@ -50,4 +48,5 @@ public class ControladorProductoTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
+
 }

@@ -9,6 +9,8 @@ public class GarantiaExtendida {
 	private Date fechaFinGarantia;
 	private double precioGarantia;
 	private String nombreCliente;
+
+	public GarantiaExtendida(){ }
 	
 	public GarantiaExtendida(Producto producto) {
 		this.fechaSolicitudGarantia = new Date();

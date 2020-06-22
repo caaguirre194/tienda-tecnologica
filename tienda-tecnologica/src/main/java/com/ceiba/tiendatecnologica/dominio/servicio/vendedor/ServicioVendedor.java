@@ -56,7 +56,6 @@ public class ServicioVendedor {
 		}
 		garantia.setFechaFinGarantia(fechaFinGarantia);
 		garantia.setPrecioGarantia(valorGarantia);
-		Date date2 = new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime();
 		return garantia;
 	}
 

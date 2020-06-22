@@ -29,9 +29,19 @@ public class GarantiaTestDataBuilder {
         this.nombreCliente = NOMBRE_CLIENTE;
     }
 
+    public GarantiaTestDataBuilder conFechaSolicitud(Date fechaSolicitudGarantia) {
+        this.fechaSolicitudGarantia = fechaSolicitudGarantia;
+        return this;
+    }
+
+    public GarantiaTestDataBuilder conProducto(Producto producto) {
+        this.producto = producto;
+        return this;
+    }
+
     public GarantiaExtendida build() {
         return new GarantiaExtendida(this.producto,fechaSolicitudGarantia,  this.fechaFinGarantia, this.precioGarantia,
         this.nombreCliente);
     }
-// new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime()
+    // new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime()
 }
